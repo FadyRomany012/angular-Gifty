@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <div class="text-center my-3">
+        <span class="font-weight-bold" *ngIf="_AuthService.username">
+          Welcome {{_AuthService.username.name}}</span>
+    </div>
+        <img src="assets/8.png" class="w-100" alt="">
+        <h2 class="mb-4 mt-2">Electronice</h2>
+    <div class="row">
+        
+        <div style="margin-bottom: 90px"  class="col-md-4 col-lg-3"
+             *ngFor="let product of obj">
+            <div> 
+                <div class="parent position-relative text-center overflow-hidden">
+                        <img style="height:200px" [src]="product.imgUrl" alt=""  class="mb-5 img-fluid">
+                        <div class="over">
+                       
+                                <p [routerLink]="['/productdetails',product.index]">Quick View<i class="ml-3 far fa-eye"></i></p>
+                           
+                        </div>
+                </div>
+                
+                <p class=" my-4">
+                    <strong class="mr-3 my-4">Price:</strong>
+                     {{product.price | currency}}
+                </p>
+                <p class=" my-4"><strong>seller:</strong> {{product.seller}}</p>
+                <div class=" d-flex mb-5" style="height:50px">
+                    <strong  class="mr-3">Description:</strong>
+               <p> {{product.description}}</p>
+            </div>
+                <input #amount type="number" min="1" placeholder="amount" class="form-control my-4">
+               
+                <button (click)="addToCart(amount,product.index)" class="addToCart">Add to Cart<i class="ml-3 fas fa-plus"></i></button>
+                <p *ngIf="amountError === product.index" class="alert alert-danger my-3 font-weight-bold">this field is  required</p>
+                <p *ngIf="adminError===product.index" class="my-2 alert alert-danger">Admin cant add  to cart</p>
+            </div>
+        </div>
+    </div>
+</div>

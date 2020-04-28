@@ -1,0 +1,59 @@
+<div class="container my-5" style="overflow: auto">
+  <div class="text-center my-3">
+    <span class="font-weight-bold" *ngIf="_AuthService.username">
+      Welcome {{_AuthService.username.name}}</span>
+</div>
+  <span *ngIf="done" class="done" style="position: fixed; top: 80px; left: 50%;">Done <i class="fas fa-check ml-2"></i></span>
+
+  <div class=" mb-5   p-3 "
+    style="    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);">
+    <h2 class="mb-4">Cart Summary</h2>
+    <p class="font-weight-bold my-3">Cart Total : {{total}}</p>
+    <p class="font-weight-bold ">Cart Length : {{cartLength}}</p>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> price </th>
+      <td class="p-3" mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td class="p-3" mat-cell *matCellDef="let element">
+        <input style="text-align:center;padding:5px;width: 75px;border: 1px solid gray !important" type="number"
+          [(ngModel)]="element.amount"> </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="seller">
+      <th mat-header-cell *matHeaderCellDef> seller </th>
+      <td class="p-3" mat-cell *matCellDef="let element"> {{element.seller}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="imgUrl">
+      <th mat-header-cell *matHeaderCellDef> Image </th>
+      <td class="p-3" mat-cell *matCellDef="let element"> <img style="width: 50px" [src]="element.imgUrl" alt=""> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="save">
+      <th mat-header-cell *matHeaderCellDef> change amount </th>
+      <td class="p-3" mat-cell *matCellDef="let element"> <button (click)="updateCart(element)"
+          class="btn btn-primary">save</button> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td class="p-3" mat-cell *matCellDef="let element"><button (click)="deleteItem(element)"
+          class="btn btn-danger">Delete</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>

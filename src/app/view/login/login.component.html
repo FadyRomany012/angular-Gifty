@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="w-75 m-auto text-center">
+    <h2 class="my-3">Login</h2>
+    <form [formGroup]="LoginForm" (ngSubmit)="log(LoginForm)">
+ 
+        
+        
+        <input type="email" class="form-control my-3" formControlName="email" placeholder="Email">
+        <p class="alert alert-danger"
+        *ngIf="LoginForm.controls.email.touched && LoginForm.controls.email.errors?.required">
+            The Email is required
+        </p>
+    
+        
+        <input type="password" class="form-control my-3" formControlName="pass" placeholder="Passworrd">
+        <p class="alert alert-danger"
+        *ngIf="LoginForm.controls.pass.touched && LoginForm.controls.pass.errors?.required">
+            The Passworrd is required
+        </p>
+    
+        
+        <button class="submit" [disabled]="LoginForm.invalid">Login</button>
+      
+        <p class="alert alert-danger my-5" *ngIf="error">{{error}}</p>
+        </form>
+        <button class="submit my-3" routerLink="/sign">Creat Account</button>
+  </div>
+    
+</div>

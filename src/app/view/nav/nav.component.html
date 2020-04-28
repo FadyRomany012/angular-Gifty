@@ -1,0 +1,71 @@
+ <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" routerLink="/home">TheGiftery</a>
+          <button (click)="opennav()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" 
+           id="navbarSupportedContent"
+           [class.show]="openNav">
+            <ul class="navbar-nav ml-auto">
+               
+              
+              <li class="nav-item">
+                <a  class="nav-link" routerLink="/home" routerLinkActive="actv">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a  class="nav-link" routerLink="/kids" routerLinkActive="actv">Kids</a>
+                </li>
+                <li class="nav-item">
+                    <a  class="nav-link" routerLink="/toys" routerLinkActive="actv">Toys</a>
+                  </li>
+                    <li class="nav-item">
+                    <a  class="nav-link" routerLink="/electronics" routerLinkActive="actv">Electronics</a>
+                  </li>
+                      <li class="nav-item">
+                    <a   class="nav-link" routerLink="/cadbury" routerLinkActive="actv">Cadbury</a>
+                  </li>
+                  <li class="nav-item" *ngIf="userName && userName.admin">
+                      <a  class="nav-link" routerLink="/admin" routerLinkActive="actv">Dashboard</a>
+                    </li>
+              <li class="nav-item" *ngIf="userName && userName.admin===false">
+                <a  class="nav-link" routerLink="/cart" routerLinkActive="actv">
+                  Cart
+                  <i class=" fas fa-shopping-cart position-relative">
+                    <div class="amount">{{cartLength}}</div>
+                  </i> 
+                  
+                </a>         
+                
+              </li>
+              <li class="nav-item" *ngIf="user">
+                <a style="cursor: pointer" class="nav-link" 
+                (click)="logOut()">Logout <i class="fas fa-power-off"></i></a>
+              </li>
+            <li class="nav-item dropdown" ngbDropdown routerLinkActive="actv" *ngIf="!user">
+                <a style="cursor: pointer"  class=" nav-link dropdown-toggle"  id="dropdownBasic1" ngbDropdownToggle>
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="dropdown-menu"  ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <a  class="dropdown-item" ngbDropdownItem
+                  routerLink="/sign" routerLinkActive="actv">Create Account</a>
+                  <a  class="dropdown-item" ngbDropdownItem
+                  routerLink="/login" routerLinkActive="actv">Login</a>
+                 
+                </div>  
+              </li>
+              <li class="nav-item" *ngIf="userName">
+                  <a  class="nav-link circular" routerLink="/cart">
+                    {{userName.name | uppercase | slice : 0 : 1}}</a>
+                  
+                </li>
+   
+            </ul>
+        
+          </div>
+          <div *ngIf="_AuthService.alert" class="added text-white  p-3" style="position: fixed; background: #40c140;top: 80px;  right: 25px;z-index: 1111">added to your cart succesfuly</div>
+       
+        </div>
+            </nav>
+           <!--  -->

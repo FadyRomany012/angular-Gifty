@@ -1,0 +1,80 @@
+<div class="container mb-5">
+  <div class="text-center mb-5 mt-3">
+    <span class="font-weight-bold" *ngIf="_AuthService.username">
+      Welcome {{_AuthService.username.name}}</span>
+</div>
+<div class="text-center">
+  <h2>Add Product</h2>
+</div>
+    <form [formGroup]="adminForm" (ngSubmit)="add(adminForm)">
+        <input class="form-control my-3" type="text" placeholder="Seller" formControlName="seller">
+        <p class="alert alert-danger my-3"
+            *ngIf="adminForm.controls.seller.errors?.required && adminForm.controls.seller.touched">Seller Is Required
+        </p>
+
+        <input class="form-control my-3" min="1" type="number" placeholder="Price" formControlName="price">
+        <p class="alert alert-danger my-3"
+        *ngIf="adminForm.controls.price.errors?.required && adminForm.controls.price.touched">Price Is Required
+       </p>
+
+        <input #file class="form-control my-3" type="file" placeholder="Image" formControlName="imgUrl">
+        <p class="alert alert-danger my-3"
+        *ngIf="adminForm.controls.imgUrl.errors?.required && adminForm.controls.imgUrl.touched">Image Is Required
+    </p>
+        <select class="form-control my-3" formControlName="category">
+            <optgroup label="Category">
+                <option value="cad">Cadbury</option>
+                <option value="elec">Electronics</option>
+                <option value="kids">Kids</option>
+                <option value="toys">Toys</option>
+            </optgroup>
+        </select>
+        <p class="alert alert-danger my-3"
+        *ngIf="adminForm.controls.category.errors?.required && adminForm.controls.category.touched">Category Is Required
+    </p>
+        <textarea formControlName="description" class="form-control my-3" placeholder="Description"></textarea>
+        <p class="alert alert-danger my-3"
+        *ngIf="adminForm.controls.description.errors?.required && adminForm.controls.description.touched">Description Is Required
+    </p>
+        <button class="submit" [disabled]="adminForm.invalid">Add Product</button>
+    </form>
+</div>
+<div class="container my-5" style="overflow: auto">
+     
+              <table  mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+        
+               
+        
+                <ng-container matColumnDef="price">
+                  <th mat-header-cell *matHeaderCellDef> Price </th>
+                  <td class="p-3" mat-cell *matCellDef="let element"> 
+                    <input  style="padding:5px;width: 75px;border: 1px solid gray !important" type="number" [(ngModel)]="element.price"> </td>
+                </ng-container>
+              
+           
+                <ng-container matColumnDef="seller">
+                  <th mat-header-cell *matHeaderCellDef> seller </th>
+                  <td class="p-3" mat-cell *matCellDef="let element"> {{element.seller}} </td>
+                </ng-container>
+              
+               
+                <ng-container matColumnDef="imgUrl">
+                  <th mat-header-cell *matHeaderCellDef> Image </th>
+                  <td class="p-3" mat-cell *matCellDef="let element"> <img style="width: 50px" [src]="element.imgUrl" alt=""> </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="save">
+                  <th mat-header-cell *matHeaderCellDef> change Price </th>
+                  <td class="p-3" mat-cell *matCellDef="let element"> <button  (click)="updateProduct(element)" class="btn btn-primary">save</button> </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="delete">
+                  <th mat-header-cell *matHeaderCellDef> Delete </th>
+                  <td class="p-3" mat-cell *matCellDef="let element"><button (click)="deleteItem(element)" class="btn btn-danger">Delete</button></td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+           
+        </div> 

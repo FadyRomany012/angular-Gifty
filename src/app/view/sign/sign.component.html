@@ -1,0 +1,42 @@
+
+<div class="container">
+    <div class="w-75 text-center m-auto">
+        <h2 class="my-3">Create Account</h2>
+            <form [formGroup]="createAccountForm" (ngSubmit)="sign(createAccountForm)">
+                    <input type="text" class="form-control my-3" formControlName="name" placeholder="Name">
+                    <p class="alert alert-danger"
+                    *ngIf="createAccountForm.controls.name.touched && createAccountForm.controls.name.errors?.required">
+                        The Name is required
+                    </p>
+                    <p class="alert alert-danger"
+                    *ngIf="createAccountForm.controls.name.errors?.pattern && createAccountForm.controls.name.touched">
+                            First Letter Must be Capital
+                    </p>
+                        
+                    
+                    
+                    <input type="email" class="form-control my-3" formControlName="email" placeholder="Email">
+                    <p class="alert alert-danger"
+                    *ngIf="createAccountForm.controls.email.touched && createAccountForm.controls.email.errors?.required">
+                        The Email is required
+                    </p>
+                    <p class="alert alert-danger"
+                    *ngIf="createAccountForm.controls.email.errors?.email && createAccountForm.controls.email.touched">
+                            Enter a Valid Email
+                    </p>
+                    
+                    <input type="password" class="form-control my-3" formControlName="pass" placeholder="Passworrd">
+                    <p class="alert alert-danger"
+                    *ngIf="createAccountForm.controls.pass.touched && createAccountForm.controls.pass.errors?.required">
+                        The Passworrd is required
+                    </p>
+                    <p class="alert alert-danger"
+                    *ngIf="createAccountForm.controls.pass.errors?.minlength && createAccountForm.controls.pass.touched">
+                          min length is six
+                    </p>
+                    
+                    <button class="submit" [disabled]="createAccountForm.invalid">Create Account</button>
+                    <p class="alert alert-danger my-5" *ngIf="error">{{error}}</p>
+                    </form>
+    </div>
+</div>

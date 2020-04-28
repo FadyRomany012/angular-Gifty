@@ -1,0 +1,190 @@
+/* You can add global styles to this file, and also import other style files */
+$mainColor:orange;
+$white:white;
+.navbar {
+  background-color:#231f1e !important;
+  .nav-link {
+      color:$white !important;
+      font-size: 20px
+  }
+  .navbar-brand {
+      font-family: 'Kaushan Script' ;
+      color:$white !important;
+      font-size: 30px
+  }
+  .actv{color:$mainColor !important}
+  .navbar-toggler{
+      background:$mainColor !important
+  }
+  .amount {
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+      top: -16px;
+      right: -10px;
+      color: $white;
+      line-height: 20px;
+      text-align:center;
+      font-size:small
+  }
+  .dropdown-menu{
+      background:black !important;
+      color:$white !important
+  }
+  .dropdown-item{color:$white !important}
+  .dropdown-item:hover{
+      background:$mainColor !important
+  }
+  .orange{color:$mainColor !important}
+}
+
+
+
+
+.container {
+    .over {
+        position: absolute;
+        width:100%;
+        height:100%;
+        top:0;
+        left:-100%;
+        background-color: rgba(248, 148, 6, .9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:$white;
+        transition: .9s;
+        p {
+          border: 1px solid $white;
+          border-radius: 15px;
+          padding: 15px 20px;
+          cursor: pointer;
+        }
+        p:hover {
+          background: $white;
+          color:black
+        }
+    }
+    
+    .parent:hover .over{left:0}
+    input,select,textarea{border:3px solid $mainColor !important}
+  }
+  strong{margin-block: 15px}
+  .addToCart
+  {
+  background: $mainColor;
+  color: $white;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  transition: .5s;
+  border:3px solid transparent;
+  }
+  .addToCart:hover{
+    background:none;
+    border:3px solid $mainColor;
+    color:$mainColor
+  }
+  .done {
+    background: #42ad42;
+    color: $white;
+    display: inline-block;
+    padding: 7px;
+    font-weight: bold;
+  }
+  .submit{
+    background: $mainColor;
+    color: $white;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+  }
+
+.carousel-control-prev-icon {
+    background-image: url("assets/right.png");
+    width: 50px;
+    height: 50px;
+}
+.carousel-control-next-icon {
+  background-image: url("assets/left.png");
+  width: 50px;
+  height: 50px;
+}
+  // start loading css animation
+  .lds-grid {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    .lds-grid div {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: $mainColor;
+      animation: lds-grid 1.2s linear infinite;
+    }
+    .lds-grid div:nth-child(1) {
+      top: 8px;
+      left: 8px;
+      animation-delay: 0s;
+    }
+    .lds-grid div:nth-child(2) {
+      top: 8px;
+      left: 32px;
+      animation-delay: -0.4s;
+    }
+    .lds-grid div:nth-child(3) {
+      top: 8px;
+      left: 56px;
+      animation-delay: -0.8s;
+    }
+    .lds-grid div:nth-child(4) {
+      top: 32px;
+      left: 8px;
+      animation-delay: -0.4s;
+    }
+    .lds-grid div:nth-child(5) {
+      top: 32px;
+      left: 32px;
+      animation-delay: -0.8s;
+    }
+    .lds-grid div:nth-child(6) {
+      top: 32px;
+      left: 56px;
+      animation-delay: -1.2s;
+    }
+    .lds-grid div:nth-child(7) {
+      top: 56px;
+      left: 8px;
+      animation-delay: -0.8s;
+    }
+    .lds-grid div:nth-child(8) {
+      top: 56px;
+      left: 32px;
+      animation-delay: -1.2s;
+    }
+    .lds-grid div:nth-child(9) {
+      top: 56px;
+      left: 56px;
+      animation-delay: -1.6s;
+    }
+    @keyframes lds-grid {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+    
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,50 @@
+<ngb-carousel>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img class="w-100 sli" src="assets/17010.png" alt="Random first slide">
+    </div>
+   
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img class="w-100 sli" src="assets/17127.jpeg" alt="Random second slide">
+    </div>
+   
+  </ng-template>
+
+</ngb-carousel>
+<div class="text-center my-3">
+    <span class="font-weight-bold" *ngIf="_AuthService.username">
+      Welcome {{_AuthService.username.name}}</span>
+</div>
+<div class="container mt-5">
+  <div class="row">
+
+    <div style="margin-bottom: 90px" class="col-md-4 col-lg-3" *ngFor="let product of products ;let i = index">
+      <div>
+        <div class="position-relative text-center overflow-hidden parent">
+          <img style="height:200px" [src]="product.imgUrl" alt="" class="img-fluid mb-3">
+          <div class="over">
+
+            <p [routerLink]="['/productdetails',i]">Quick View<i class="ml-3 far fa-eye"></i></p>
+          </div>
+        </div>
+
+        <p class="my-3">
+          <strong class="mr-3">Price:</strong>
+          {{product.price | currency}}
+        </p>
+
+        <p class=" my-4"><strong>seller:</strong> {{product.seller}}</p>
+        <div class=" d-flex mb-5" style="height:50px">
+          <strong class="mr-3">Description:</strong>
+          <p> {{product.description}}</p>
+        </div>
+        <input #amount type="number" min="1" placeholder="amount" class="form-control my-4">
+        <button (click)="addToCart(amount,i)" class="addToCart">Add to Cart<i class="ml-3 fas fa-plus"></i></button>
+        <p *ngIf="amountError==i" class="my-2 alert alert-danger">the amount is required</p>
+        <p *ngIf="adminError===i" class="my-2 alert alert-danger">Admin cant add  to cart</p>
+      </div>
+    </div>
+  </div>
+</div>

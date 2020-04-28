@@ -1,0 +1,39 @@
+<section style="height: calc(100vh - 71px)" class="d-md-flex align-items-center ">
+        <div class="container  " *ngIf="obj">
+                <div class="text-center ">
+                        <span class="font-weight-bold" *ngIf="_AuthService.username">
+                          Welcome {{_AuthService.username.name}}</span>
+                    </div>
+                <div class="row">
+                        <div class="col-md-6">
+                                <img [src]="obj.imgUrl" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                <div>
+                                        <div class="my-3 d-flex">
+                                                <h1 class="mr-3 ">Description:</h1>
+                                                <strong class="mt-3">{{obj.description}}</strong>
+                                        </div>
+                                        <div class="my-3 d-flex">
+                                                <h1 class="mr-3 ">Price:</h1>
+                                                <strong class="mt-3">{{obj.price | currency}}</strong>
+                                        </div>
+                                        <div class="my-3 d-flex">
+                                                <h1 class="mr-3 ">seller:</h1>
+                                                <strong class="mt-3">{{obj.seller}}</strong>
+                                        </div>
+                                        <input #amount type="number" min="1" placeholder="amount"
+                                                class="form-control my-4">
+                                        <button (click)="addToCart(amount)" class="addToCart my-3 d-block">Add to Cart<i
+                                                        class="ml-3 fas fa-plus"></i></button>
+                                        <p *ngIf="amountError" class="alert alert-danger my-3 font-weight-bold">this
+                                                field is required
+                                        </p>
+                                        <p *ngIf="adminError" class="my-2 alert alert-danger">Admin cant add  to cart</p>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+
+</section>
